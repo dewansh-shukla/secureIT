@@ -21,11 +21,13 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Header />
-        <Routes>
-          <Route exact path='/' element={<Landing />} />
-          <Route path='signup' element={<SignUp />} />
-          <Route path='login' element={<Login />} />
-        </Routes>
+        <div style={{ marginTop: "80px" }}>
+          <Routes>
+            <Route exact path='/' element={<Landing />} />
+            <Route path='signup' element={<SignUp />} />
+            <Route path='login' element={<Login />} />
+          </Routes>
+        </div>
       </ThemeProvider>
     </BrowserRouter>
   )
