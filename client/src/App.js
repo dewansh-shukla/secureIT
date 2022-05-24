@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Header />
-        <div style={{ marginTop: "80px" }}>
+        <div style={{ marginTop: "100px" }}>
           <Routes>
             <Route exact path='/' element={<Landing />} />
             <Route path='signup' element={<SignUp />} />
