@@ -37,8 +37,8 @@ function Header() {
               <Tab label='Home' />
               <Tab label='Home' />
             </Tabs>
-            <Btn onClick={() => navigate("/login")}>Login</Btn>
             <Btn onClick={() => navigate("/signup")}>SignUp</Btn>
+            <Btn onClick={() => navigate("/login")}>Login</Btn>
           </Box>
         </Toolbar>
       </AppBar>
