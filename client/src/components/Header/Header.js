@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { AppBar, Box, Toolbar, Tab, Tabs, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import React, { useState } from "react"
+import { AppBar, Box, Toolbar, Tab, Tabs, Typography } from "@mui/material"
+import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
 function Header() {
-  const [value, setValue] = useState();
-  let navigate = useNavigate();
+  const [value, setValue] = useState()
+  let navigate = useNavigate()
   return (
     <React.Fragment>
       <AppBar
@@ -34,14 +34,14 @@ function Header() {
           </Typography>
           <Box sx={{ marginLeft: "auto", display: "flex" }}>
             <Tabs
-              indicatorColor="primary"
-              textColor="inherit"
+              indicatorColor='primary'
+              textColor='inherit'
               value={value}
               onChange={(e, value) => setValue(value)}
             >
-              <Tab label="Home" />
-              <Tab label="Home" />
-              <Tab label="Home" />
+              <Tab label='Home' />
+              <Tab label='Home' />
+              <Tab label='Home' />
             </Tabs>
             <Btn onClick={() => navigate("/signup")}>SignUp</Btn>
             <Btn onClick={() => navigate("/login")}>Login</Btn>
@@ -49,7 +49,7 @@ function Header() {
         </Toolbar>
       </AppBar>
     </React.Fragment>
-  );
+  )
 }
 const Btn = styled.button`
   color: black;
@@ -62,6 +62,6 @@ const Btn = styled.button`
   &:hover {
     opacity: 0.9;
   }
-`;
+`
 
-export default Header;
+export default Header
