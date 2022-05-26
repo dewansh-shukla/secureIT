@@ -1,94 +1,107 @@
-import { TextField, Typography } from "@mui/material"
-import React from "react"
-import styled from "styled-components"
-function SignUp() {
+import React from "react";
+import {
+  FaFacebook,
+  FaLinkedinIn,
+  FaGoogle,
+  FaRegEnvelope,
+} from "react-icons/fa";
+import { MdLockOutline } from "react-icons/md";
+import { FiUser } from "react-icons/fi";
+
+function Login() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <div
-        style={{
-          width: "350px",
-          height: "500px",
-          background: "white",
-          borderRadius: "30px",
-          display: "flex",
-          flexDirection: "column",
-          border: "2px solid yellow",
-        }}
-      >
-        <Typography
-          sx={{
-            textAlign: "center",
-            margin: "40px 0px 20px 0px",
-            color: "black",
-            fontWeight: "bold",
-            fontSize: "1rem",
-          }}
-        >
-          Signup and get Started !!!
-        </Typography>
-        <form>
-          <div
-            style={{
-              display: "flex",
-              height: "300px",
-              flexDirection: "column",
-              width: "100%",
-              justifyContent: "space-evenly",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              id='outlined-basic'
-              label='username'
-              variant='outlined'
-              sx={{ margin: "5px 0px 5px 0px", width: "80%" }}
-            />
-            <TextField
-              id='outlined-basic'
-              label='email'
-              variant='outlined'
-              sx={{ margin: "5px 0px 5px 0px", width: "80%" }}
-            />
-            <TextField
-              id='outlined-basic'
-              label='password'
-              variant='outlined'
-              sx={{ margin: "5px 0px 5px 0px", width: "80%" }}
-            />
-            <div
-              style={{
-                width: "80%",
-                display: "flex",
-                justifyContent: "flex-end",
-              }}
-            >
-              <SubmitBtn>submit</SubmitBtn>
+    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+      <main className="flex flex-col items-center mt-16 pt-10 w-full flex-1 px-20 text-center">
+        <div className="bg-neutral-500 rounded-2xl shadow-2xl flex w-2/3 max-w-4xl">
+          <div className="w-3/5 p-5 ">
+            <div className="flex text-left font-bold">
+              <span className="text-2xl">Secure</span>
+              <span className="text-1xl font-bold text-yellow-500">IT</span>
+            </div>
+            <div className="py-5">
+              <h2 className="text-3xl text-yellow-400 font-bold mb-2">
+                Sign Up your Account
+              </h2>
+              <div className="border-2 w-40 border-yellow-400 inline-block mb-2"></div>
+            </div>
+            <div className="flex justify-center my-2">
+              <a
+                href="#"
+                className="border-2 border-yellow-300 rounded-full p-3 mx-2"
+              >
+                <FaFacebook className="text-md"></FaFacebook>
+              </a>
+              <a
+                href="#"
+                className="border-2 border-yellow-300 rounded-full p-3 mx-2"
+              >
+                <FaLinkedinIn className="text-md"></FaLinkedinIn>
+              </a>
+              <a
+                href="#"
+                className="border-2 border-yellow-300 rounded-full p-3 mx-2"
+              >
+                <FaGoogle className="text-md"></FaGoogle>
+              </a>
+            </div>
+            <p className="text-black my-3">or use your email account</p>
+            <div className="flex flex-col items-center">
+              <div className="bg-gray-200 w-64 p-2 flex items-center mb-3">
+                <FiUser className="text-slate-700 m-2 ml-1" />
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  className="outline-none text-md flex-1"
+                />
+              </div>
+              <div className="bg-gray-200 w-64 p-2 flex items-center mb-3">
+                <FaRegEnvelope className="text-slate-700 m-2 ml-1" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="outline-none text-md flex-1"
+                />
+              </div>
+              <div className="bg-gray-200 w-64 p-2 flex items-center mb-3">
+                <MdLockOutline className="text-slate-700 m-2 ml-1" />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="outline-none text-md flex-1"
+                />
+              </div>
+              <div className="flex w-64 mb-5 text-sm justify-between ">
+                <label className="flexitems-center">
+                  <input type="checkbox" name="remember" className="mr-1" />
+                  Remember Me
+                </label>
+              </div>
+              <a
+                href="../signup"
+                className="border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black"
+              >
+                Sign Up
+              </a>
             </div>
           </div>
-        </form>
-      </div>
+          <div className="w-2/5 bg-yellow-400 text-black rounded-tr-2xl rounded-br-2xl py-36 px-12">
+            <h2 className="text-3xl font-bold mb-2">Hello, Friends</h2>
+            <div className="border-2 w-20 border-black inline-block mb-2"></div>
+            <p className="mb-10">If you already have an account then Login!</p>
+            <a
+              href="../login"
+              className="border-2 border-black rounded-full px-12 py-2 inline-block font-semibold hover:bg-black hover:text-yellow-400"
+            >
+              Log In
+            </a>
+          </div>
+        </div>
+      </main>
     </div>
-  )
+  );
 }
 
-const SubmitBtn = styled.button`
-  background-color: yellow;
-  border-radius: 30px;
-  padding: 5px 20px 5px 20px;
-  border: 1px solid gray;
-  cursor: pointer;
-  margin-top: 20px;
-  &:hover {
-    opacity: 0.5;
-  }
-`
-
-export default SignUp
+export default Login;
