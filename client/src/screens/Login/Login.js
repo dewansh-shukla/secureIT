@@ -1,4 +1,6 @@
-import React from "react"
+import { Alert, Snackbar } from "@mui/material"
+import axios from "axios"
+import React, { useState } from "react"
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -6,8 +8,35 @@ import {
   FaRegEnvelope,
 } from "react-icons/fa"
 import { MdLockOutline } from "react-icons/md"
-
+import { useNavigate } from "react-router-dom"
 function Login() {
+  const navigate = useNavigate()
+  const [invalidUser, setInvalidUser] = useState(false)
+
+  const handleLogin = (e) => {
+    e.preventDefault()
+    const form = e.target
+    const user = {
+      username: form[0].value,
+      password: form[1].value,
+    }
+
+    fetch("http://localhost:4000/login/", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token)
+        if (data.message === "Success") {
+          navigate("/selection")
+        } else setInvalidUser(true)
+      })
+  }
+
   return (
     <div className='flex flex-col items-center justify-center'>
       <main className='flex flex-col items-center pt-10 w-full flex-1 px-20 text-center'>
@@ -44,41 +73,50 @@ function Login() {
               </a>
             </div>
             <p className='text-black my-3'>or use your email account</p>
+
+            <Snackbar
+              open={invalidUser}
+              autoHideDuration={3000}
+              onClose={() => setInvalidUser(false)}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            >
+              <Alert severity='warning'>Enter Valid Username or Password</Alert>
+            </Snackbar>
+
+            {/* Input div starts here */}
+
             <div className='flex flex-col items-center'>
-              <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
-                <FaRegEnvelope className='text-slate-700 m-2 ml-1' />
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                  className='outline-none text-md flex-1'
-                />
-              </div>
-              <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
-                <MdLockOutline className='text-slate-700 m-2 ml-1' />
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                  className='outline-none text-md flex-1'
-                />
-              </div>
-              <div className='flex w-64 mb-5 text-sm justify-between '>
-                <label className='flexitems-center'>
-                  <input type='checkbox' name='remember' className='mr-1' />
-                  Remember Me
-                </label>
-                <a href='#' className='text-black text-sm'>
-                  Forgot Password?
-                </a>
-              </div>
-              <a
-                href='../signup'
-                className='border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black'
-              >
-                Log In
-              </a>
+              <form onSubmit={(e) => handleLogin(e)}>
+                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                  <FaRegEnvelope className='text-slate-700 m-2 ml-1' />
+                  <input
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    className='outline-none text-md flex-1'
+                  />
+                </div>
+                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                  <MdLockOutline className='text-slate-700 m-2 ml-1' />
+                  <input
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                    className='outline-none text-md flex-1'
+                  />
+                </div>
+
+                <button
+                  type='submit'
+                  value='submit'
+                  className='border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black'
+                >
+                  Log In
+                </button>
+              </form>
             </div>
+
+            {/* Input div ends Here */}
           </div>
           <div className='w-2/5 bg-yellow-400 text-black rounded-tr-2xl rounded-br-2xl py-36 px-12'>
             <h2 className='text-3xl font-bold mb-2'>Hello, Friends</h2>

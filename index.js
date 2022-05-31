@@ -9,10 +9,12 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const app = express()
 const PORT = process.env.PORT || 4000
 import registerRoutes from "./routes/registerRouter.js"
+import loginRoutes from "./routes/loginRouter.js"
 db()
 app.use(bodyParser.json(), urlencodedParser)
 app.use(cors())
-app.use("/", registerRoutes)
+app.use("/signup", registerRoutes)
+app.use("/login", loginRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })

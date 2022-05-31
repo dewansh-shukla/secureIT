@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -8,9 +8,27 @@ import {
 import { MdLockOutline } from "react-icons/md"
 import { FiUser } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
+import { Snackbar, Alert } from "@mui/material"
+import axios from "axios"
 
 function Login() {
   const navigate = useNavigate()
+  const handleRegister = (e) => {
+    e.preventDefault()
+    const form = e.target
+    const user = {
+      username: form[0].value,
+      email: form[1].value,
+      password: form[2].value,
+    }
+    axios.post("http://localhost:4000/signup/", user).then((res) => {
+      if (res.data.message === "Username or email taken") {
+        setUsernameExist(true)
+      }
+    })
+  }
+  const [usernameExist, setUsernameExist] = useState(false)
+
   return (
     <div className='flex flex-col items-center justify-center  py-2'>
       <main className='flex flex-col items-center  w-full  px-20 text-center'>
@@ -48,47 +66,59 @@ function Login() {
               </a>
             </div>
             <p className='text-black my-3'>or use your email account</p>
+
+            {/* Inputs for Register Page Starts Here  */}
+            <Snackbar
+              open={usernameExist}
+              autoHideDuration={3000}
+              onClose={() => setUsernameExist(false)}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+            >
+              <Alert severity='warning'>
+                Username or email already exist !!! PLEASE LOGIN
+              </Alert>
+            </Snackbar>
             <div className='flex flex-col items-center'>
-              <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
-                <FiUser className='text-slate-700 m-2 ml-1' />
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Username'
-                  className='outline-none text-md flex-1'
-                />
-              </div>
-              <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
-                <FaRegEnvelope className='text-slate-700 m-2 ml-1' />
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='Email'
-                  className='outline-none text-md flex-1'
-                />
-              </div>
-              <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
-                <MdLockOutline className='text-slate-700 m-2 ml-1' />
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                  className='outline-none text-md flex-1'
-                />
-              </div>
-              <div className='flex w-64 mb-5 text-sm justify-between '>
-                <label className='flexitems-center'>
-                  <input type='checkbox' name='remember' className='mr-1' />
-                  Remember Me
-                </label>
-              </div>
-              <a
-                href='../signup'
-                className='border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black'
-              >
-                Sign Up
-              </a>
+              <form onSubmit={(e) => handleRegister(e)}>
+                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                  <FiUser className='text-slate-700 m-2 ml-1' />
+                  <input
+                    type='text'
+                    name='username'
+                    placeholder='Username'
+                    className='outline-none text-md flex-1'
+                  />
+                </div>
+                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                  <FaRegEnvelope className='text-slate-700 m-2 ml-1' />
+                  <input
+                    type='email'
+                    name='email'
+                    placeholder='Email'
+                    className='outline-none text-md flex-1'
+                  />
+                </div>
+                <div className='bg-gray-200 w-64 p-2 flex items-center mb-3'>
+                  <MdLockOutline className='text-slate-700 m-2 ml-1' />
+                  <input
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                    className='outline-none text-md flex-1'
+                  />
+                </div>
+
+                <button
+                  type='submit'
+                  value='submit'
+                  className='border-2 border-yellow-400 text-yellow-400 rounded-full px-12 py-2 inline-block font-semibold hover:bg-yellow-400 hover:text-black'
+                >
+                  Sign Up
+                </button>
+              </form>
             </div>
+
+            {/* Inputs for Register Page Ends Here  */}
           </div>
           <div className='w-2/5 bg-yellow-400 text-black rounded-tr-2xl rounded-br-2xl py-36 px-12'>
             <h2 className='text-3xl font-bold mb-2'>Hello, Friends</h2>
