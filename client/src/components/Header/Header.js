@@ -10,7 +10,7 @@ function Header() {
       <AppBar
         sx={{
           background: "#000",
-          height: "100px",
+          height: "70px",
           display: "flex",
           width: "100%",
           justifyContent: "center",
