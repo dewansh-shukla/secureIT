@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Landing from "./screens/Landing/Landing"
 import SignUp from "./screens/Signup/SignUp"
 import Login from "./screens/Login/Login"
-import SelectionPage from "./screens/CardSelection/SelectionPage";
+import Select from "./screens/SelectionPage/Select"
 
 const theme = createTheme({
   typography: {
@@ -27,7 +27,7 @@ function App() {
             <Route exact path='/' element={<Landing />} />
             <Route path='signup' element={<SignUp />} />
             <Route path='login' element={<Login />} />
-            <Route path='select' element={<SelectionPage />} />
+            <Route path='select' element={<Select />} />
           </Routes>
         </div>
       </ThemeProvider>
