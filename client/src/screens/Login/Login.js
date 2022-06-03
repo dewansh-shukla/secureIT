@@ -1,5 +1,5 @@
 import { Alert, Snackbar } from "@mui/material"
-import axios from "axios"
+// import axios from "axios"
 import React, { useState } from "react"
 import {
   FaFacebook,
@@ -32,7 +32,7 @@ function Login() {
       .then((data) => {
         localStorage.setItem("token", data.token)
         if (data.message === "Success") {
-          navigate("/selection")
+          navigate("/select")
         } else setInvalidUser(true)
       })
   }
@@ -54,19 +54,19 @@ function Login() {
             </div>
             <div className='flex justify-center my-2'>
               <a
-                href='#'
+                href='facebook.com'
                 className='border-2 border-yellow-300 rounded-full p-3 mx-2'
               >
                 <FaFacebook className='text-md'></FaFacebook>
               </a>
               <a
-                href='#'
+                href='linkedin.com'
                 className='border-2 border-yellow-300 rounded-full p-3 mx-2'
               >
                 <FaLinkedinIn className='text-md'></FaLinkedinIn>
               </a>
               <a
-                href='#'
+                href='google.com'
                 className='border-2 border-yellow-300 rounded-full p-3 mx-2'
               >
                 <FaGoogle className='text-md'></FaGoogle>

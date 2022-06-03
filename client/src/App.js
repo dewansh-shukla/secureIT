@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Landing from "./screens/Landing/Landing"
 import SignUp from "./screens/Signup/SignUp"
 import Login from "./screens/Login/Login"
-import SelectionPage from "./screens/SelectionPage/SelectionPage"
+import SelectionPage from "./screens/CardSelection/SelectionPage";
 
 const theme = createTheme({
   typography: {
