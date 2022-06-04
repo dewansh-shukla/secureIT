@@ -10,6 +10,7 @@ function EventsCard({ info }) {
       className='rounded-2xl rounded-bl-2xl'
       sx={{
         width: "100%",
+        maxHeight: "300px",
         margin: "10px 0px 10px 0px",
         minHeight: "200px",
         background: "black",
@@ -30,19 +31,20 @@ function EventsCard({ info }) {
                   padding: 0,
                   textAlign: "center",
                   fontSize: "18px",
+                  fontFamily: "Roboto Mono, monospace"
                 }}
               >
                 @{info.eventName}
               </Typography>
-              <Typography sx={{ fontSize: "15px", textAlign: "right" }}>
+              <Typography sx={{ fontSize: "15px", textAlign: "right",fontFamily: `'Roboto Mono', monospace !important`, }}>
                 Venue:{info.eventVenue}
               </Typography>
             </h2>
           </div>
-          <p className='text-black p-3'>{info.eventDescription}</p>
+          <p style={{fontFamily: "Roboto Mono, monospace"}} className='text-black p-3'>{info.eventDescription}</p>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <p>Start Time {info.eventStartDate}</p>
-            <p>End time {info.eventEndDate}</p>
+            <p style={{fontFamily: "Roboto Mono, monospace"}}>Start Time:  {(info.eventStartDate).slice(0,19)}</p>
+            <p style={{fontFamily: "Roboto Mono, monospace"}}>End time:  {(info.eventEndDate).slice(0,19)}</p>
           </div>
         </div>
         <div
