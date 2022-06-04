@@ -50,9 +50,11 @@ function Organize() {
                   padding: "10px",
                   margin: "10px",
                 }}
-              >
+              ><div style={{marginBottom: "10px"}}></div>
                 {CardsData.map((value, index) => (
+                  <>
                   <EventsCard />
+                  </>
                 ))}
               </div>
             </div>

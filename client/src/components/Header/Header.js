@@ -39,15 +39,9 @@ function Header() {
               value={value}
               onChange={(e, value) => setValue(value)}
             >
-<<<<<<< HEAD
               <Tab label='Selection' onClick={() => navigate("/select")} />
               <Tab label='organizer' onClick={() => navigate("/organize")} />
               <Tab label='Home' />
-=======
-              <Tab label='Home' />
-              <Tab label='About' />
-              <Tab label='Contact' />
->>>>>>> vansh
             </Tabs>
             <Btn onClick={() => navigate("/signup")}>SignUp</Btn>
             <Btn onClick={() => navigate("/login")}>LogIn</Btn>
