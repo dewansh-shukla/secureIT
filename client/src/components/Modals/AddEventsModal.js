@@ -4,8 +4,7 @@ import DateTimePicker from "react-datetime-picker"
 import { GiCrossedBones } from "react-icons/gi"
 import { UserContext } from "../../App"
 import axios from "axios"
-
-function AddEventsModal({ open, setOpen }) {
+function AddEventsModal({ open, setOpen, refresh, setRefresh }) {
   const { user } = useContext(UserContext)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
@@ -33,6 +32,8 @@ function AddEventsModal({ open, setOpen }) {
       url: "http://localhost:4000/organizer/addevents",
       data: event,
     }).then(() => console.log("Event Added"))
+
+    setRefresh(!refresh)
   }
   console.log("Start Time", startTime)
   console.log("End time", endTime)

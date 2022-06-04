@@ -1,6 +1,6 @@
 import { Card, Container, Grid, Typography } from "@mui/material"
 import axios from "axios"
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { UserContext } from "../../App"
 import EventsCardJoin from "../../components/Cards/EventsCardJoin"

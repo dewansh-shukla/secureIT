@@ -9,6 +9,7 @@ import Login from "./screens/Login/Login"
 import Select from "./screens/SelectionPage/Select"
 import Organize from "./screens/Organizers/Organize"
 import User from "./screens/User/User"
+import AllEvents from "./screens/AllEvents/AllEvents"
 
 const theme = createTheme({
   typography: {
@@ -42,6 +43,7 @@ function App() {
               <Route path='select' element={<Select />} />
               <Route path='organize' element={<Organize />} />
               <Route path='user' element={<User />} />
+              <Route path='allevents' element={<AllEvents />} />
             </Routes>
           </div>
         </UserContext.Provider>
