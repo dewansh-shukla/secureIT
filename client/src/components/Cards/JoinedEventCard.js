@@ -1,8 +1,37 @@
-import { Button, Card, Typography } from "@mui/material"
-import React from "react"
+import { Button, Card, Snackbar, Typography } from "@mui/material"
+import React, { useState } from "react"
 import Card1 from "./card1.webp"
 function JoinedEventCard({ info }) {
-  console.log(info)
+  const [checkedIn, setCheckedIn] = useState(false)
+  const [reminder, setReminder] = useState(false)
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+    setReminder(false)
+  }
+
+  const handleCheckIn = () => {
+    setCheckedIn(!checkedIn)
+    var count = 0
+    const messageTime = 10000
+    if (checkedIn) {
+      const interval = setInterval(() => {
+        console.log("interval in every 10 sec")
+        count = count + 1
+        setTimeout(() => {
+          setReminder(true)
+        }, messageTime)
+        if (count === 2) {
+          clearInterval(interval)
+        }
+        messageTime = messageTime + 5000
+      }, 30000)
+    } else {
+      setReminder(false)
+    }
+  }
+
   return (
     <Card
       className='rounded-2xl rounded-bl-2xl'
@@ -81,7 +110,7 @@ function JoinedEventCard({ info }) {
               </span>
             </p>
           </div>
-          {info.eventCheckStatus ? (
+          {checkedIn ? (
             <>
               <Button
                 sx={{
@@ -93,6 +122,7 @@ function JoinedEventCard({ info }) {
                   fontWeight: 700,
                   margin: "20px",
                 }}
+                onClick={() => handleCheckIn()}
               >
                 CheckOut
               </Button>
@@ -109,12 +139,19 @@ function JoinedEventCard({ info }) {
                   fontWeight: 700,
                   margin: "20px",
                 }}
+                onClick={() => handleCheckIn()}
               >
                 CheckIn
               </Button>
             </>
           )}
         </div>
+        <Snackbar
+          open={reminder}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message={` Sos to Contacts ${info.contact1} and ${info.contact2}`}
+        />
         <div
           className='w-2/5 rounded-br-2xl py-36 px-8'
           style={{

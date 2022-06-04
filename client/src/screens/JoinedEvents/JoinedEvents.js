@@ -6,7 +6,6 @@ import JoinedEventCard from "../../components/Cards/JoinedEventCard"
 import { BiRefresh } from "react-icons/bi"
 function JoinedEvents() {
   const { user } = useContext(UserContext)
-  console.log("User", user)
   const [data, setData] = useState([])
   const [refresh, setRefresh] = useState(false)
   useEffect(() => {
