@@ -10,6 +10,7 @@ import Select from "./screens/SelectionPage/Select"
 import Organize from "./screens/Organizers/Organize"
 import User from "./screens/User/User"
 import AllEvents from "./screens/AllEvents/AllEvents"
+import JoinedEvent from "./screens/JoinedEvents/JoinedEvents"
 
 const theme = createTheme({
   typography: {
@@ -44,6 +45,7 @@ function App() {
               <Route path='organize' element={<Organize />} />
               <Route path='user' element={<User />} />
               <Route path='allevents' element={<AllEvents />} />
+              <Route path='joinedevents' element={<JoinedEvent />} />
             </Routes>
           </div>
         </UserContext.Provider>

@@ -113,10 +113,8 @@ function Select() {
             style={{
               height: "100%",
               width: "100%",
-              // display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // background: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url(${card2})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -155,7 +153,7 @@ function Select() {
                   borderRadius: "30px",
                   "&:hover": { opacity: "0.8" },
                 }}
-                onClick={() => navigate("/user")}
+                onClick={() => navigate("/allevents")}
               >
                 Join
               </Button>
