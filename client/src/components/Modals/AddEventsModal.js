@@ -4,12 +4,7 @@ import DateTimePicker from "react-datetime-picker"
 import { GiCrossedBones } from "react-icons/gi"
 import { UserContext } from "../../App"
 import axios from "axios"
-<<<<<<< HEAD
 function AddEventsModal({ open, setOpen, refresh, setRefresh }) {
-=======
-
-function AddEventsModal({ open, setOpen }) {
->>>>>>> ishan
   const { user } = useContext(UserContext)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)

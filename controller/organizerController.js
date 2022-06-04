@@ -20,10 +20,15 @@ const addevents = async (req, res) => {
   } else res.status(500).json({ message: "Failed to add User" })
 }
 
+const getallevents = async (req, res) => {
+  const events = await Event.find()
+  res.json(events)
+}
+
 const getMyEvents = async (req, res) => {
   const id = req.params.id
   const events = await Event.find({ user_id: id })
   res.json(events)
 }
 
-export { addevents, getMyEvents }
+export { addevents, getMyEvents, getallevents }

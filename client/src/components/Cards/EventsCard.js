@@ -12,6 +12,7 @@ function EventsCard({ info }) {
       className='rounded-2xl rounded-bl-2xl'
       sx={{
         width: "100%",
+        maxHeight: "300px",
         margin: "10px 0px 10px 0px",
         minHeight: "200px",
         background: "black",
