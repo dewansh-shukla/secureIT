@@ -4,7 +4,7 @@ import React, { useContext, useState, useEffect } from "react"
 import styled from "styled-components"
 import { UserContext } from "../../App"
 import EventsCard from "../../components/Cards/EventsCard"
-import { BiAddToQueue, BiRefresh } from "react-icons/bi"
+import {  BiRefresh } from "react-icons/bi"
 import EventsCardJoin from "../../components/Cards/EventsCardJoin"
 import "./style.css"
 
