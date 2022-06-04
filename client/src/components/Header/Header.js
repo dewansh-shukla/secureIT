@@ -40,11 +40,11 @@ function Header() {
               onChange={(e, value) => setValue(value)}
             >
               <Tab label='Home' />
-              <Tab label='Home' />
-              <Tab label='Home' />
+              <Tab label='About' />
+              <Tab label='Contact' />
             </Tabs>
             <Btn onClick={() => navigate("/signup")}>SignUp</Btn>
-            <Btn onClick={() => navigate("/login")}>Login</Btn>
+            <Btn onClick={() => navigate("/login")}>LogIn</Btn>
           </Box>
         </Toolbar>
       </AppBar>
