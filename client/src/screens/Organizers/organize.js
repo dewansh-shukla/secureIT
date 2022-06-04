@@ -1,11 +1,12 @@
 import { Card, Container, Grid, Typography } from "@mui/material"
 import axios from "axios"
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import styled from "styled-components"
 import { UserContext } from "../../App"
 import EventsCard from "../../components/Cards/EventsCard"
-import { BiAddToQueue } from "react-icons/bi"
+import { BiAddToQueue, BiRefresh } from "react-icons/bi"
 import AddEventsModal from "../../components/Modals/AddEventsModal"
+import "./style.css"
 const CardsData = [
   { cardName: "xyz0", cardDescription: "abc0" },
   { cardName: "xyz1", cardDescription: "abc1" },
@@ -16,7 +17,18 @@ const CardsData = [
 function Organize() {
   const { user } = useContext(UserContext)
   const [open, setOpen] = useState(false)
-
+  const [data, setData] = useState([])
+  const [refresh, setRefresh] = useState(false)
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/organizer/getmyevents/${user.id}`)
+      .then((res) => setData(res.data))
+  }, [])
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/organizer/getmyevents/${user.id}`)
+      .then((res) => setData(res.data))
+  }, [refresh])
   return (
     <Main>
       <Container maxWidth='xl' sx={{ padding: 0, margin: 0 }}>
@@ -38,26 +50,56 @@ function Organize() {
                 width: "100%",
               }}
             >
-              <Typography sx={{ color: "white", marginBottom: "20px" }}>
-                Events Organised By You
-              </Typography>
               <div
                 style={{
-                  maxHeight: "70vh",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "100%",
+                  fontSize: "25px",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "white",
+                    marginBottom: "20px",
+                    padding: 0,
+                    margin: 0,
+                  }}
+                >
+                  Events Organised By You
+                </Typography>
+                <button
+                  style={{ color: "white", marginLeft: "10px" }}
+                  onClick={() => setRefresh(!refresh)}
+                >
+                  <BiRefresh />
+                </button>
+              </div>
+              <div
+                style={{
+                  maxHeight: "550px",
+                  minHeight: "550px",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "space-evenly",
                   overflowY: "auto",
                   width: "100%",
-                  padding: "10px",
+                  padding: "20px",
                   margin: "10px",
+                  border: "2px solid yellow",
+                  borderRadius: "30px",
                 }}
-              ><div style={{marginBottom: "10px"}}></div>
-                {CardsData.map((value, index) => (
+                className='xyz'
+              >
+                {data.length > 0 ? (
+                  data.map((value, index) => <EventsCard info={value} />)
+                ) : (
                   <>
-                  <EventsCard />
+                    <Typography variant='body' sx={{ color: "white" }}>
+                      No Events
+                    </Typography>
                   </>
-                ))}
+                )}
               </div>
             </div>
           </Grid>
@@ -131,7 +173,11 @@ function Organize() {
               </div>
             </div>
           </Grid>
-          <AddEventsModal open={open} setOpen={setOpen} />
+          <AddEventsModal
+            open={open}
+            setOpen={setOpen}
+            setRefresh={setRefresh}
+          />
           {/* Space Holder */}
           <Grid item xl={1} sx={{ background: "" }} />
         </Grid>
