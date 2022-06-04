@@ -8,6 +8,7 @@ import SignUp from "./screens/Signup/SignUp"
 import Login from "./screens/Login/Login"
 import Select from "./screens/SelectionPage/Select"
 import Organize from "./screens/Organizers/Organize"
+import User from "./screens/User/User"
 
 const theme = createTheme({
   typography: {
@@ -40,6 +41,7 @@ function App() {
               <Route path='login' element={<Login />} />
               <Route path='select' element={<Select />} />
               <Route path='organize' element={<Organize />} />
+              <Route path='user' element={<User />} />
             </Routes>
           </div>
         </UserContext.Provider>

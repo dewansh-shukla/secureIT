@@ -1,10 +1,11 @@
 import { Card, Container, Grid, Typography } from "@mui/material"
 import axios from "axios"
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { UserContext } from "../../App"
 import EventsCard from "../../components/Cards/EventsCard"
-
+import { BiAddToQueue } from "react-icons/bi"
+import AddEventsModal from "../../components/Modals/AddEventsModal"
 const CardsData = [
   { cardName: "xyz0", cardDescription: "abc0" },
   { cardName: "xyz1", cardDescription: "abc1" },
@@ -14,7 +15,8 @@ const CardsData = [
 
 function Organize() {
   const { user } = useContext(UserContext)
-  console.log(user)
+  const [open, setOpen] = useState(false)
+
   return (
     <Main>
       <Container maxWidth='xl' sx={{ padding: 0, margin: 0 }}>
@@ -103,20 +105,33 @@ function Organize() {
                       color: "black",
                     }}
                   >
+                    <button
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        fontSize: "18px",
+                      }}
+                      onClick={() => {
+                        setOpen(true)
+                      }}
+                    >
+                      Add New Event{" "}
+                      <BiAddToQueue style={{ fontSize: "15px" }} />
+                    </button>
                     <p style={{ fontWeight: 900, fontSize: "1em" }}>
                       Email:
-                      <span style={{ fontWeight: 500 }}>{user?.email}</span>
+                      <span style={{ fontWeight: 500 }}> {user?.email}</span>
                     </p>
                     <p style={{ fontWeight: 900, fontSize: "1em" }}>
                       @_:
-                      <span style={{ fontWeight: 500 }}>{user?.username}</span>
+                      <span style={{ fontWeight: 500 }}> {user?.username}</span>
                     </p>
                   </div>
                 </div>
               </div>
             </div>
           </Grid>
-
+          <AddEventsModal open={open} setOpen={setOpen} />
           {/* Space Holder */}
           <Grid item xl={1} sx={{ background: "" }} />
         </Grid>

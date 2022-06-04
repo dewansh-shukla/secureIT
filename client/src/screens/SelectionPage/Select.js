@@ -34,36 +34,81 @@ function Select() {
   return (
     <Main>
       <Holder className='rounded-tr-2xl'>
-        <Card sx={{ maxWidth: 400 }}>
+        <Card
+          sx={{
+            maxWidth: 400,
+            margin: "10px",
+            borderRadius: "30px",
+            border: "3px solid yellow",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+          }}
+        >
           <div
             style={{
               height: "100%",
               width: "100%",
-              // display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              // backgroundImage: `url(${card3})`,
-              background: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url(${card3})`,
+              // background: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url(${card3})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
             <CardContent>
-              <Typography gutterBottom variant='h5' component='div'>
+              <Typography
+                gutterBottom
+                variant='h5'
+                component='div'
+                sx={{ textAlign: "center" }}
+              >
                 Organize an Event
               </Typography>
-              <Typography variant='body2' color='text.primary'>
+              <Typography
+                variant='body2'
+                color='text.primary'
+                sx={{ textAlign: "center" }}
+              >
                 We provide a platform to people, where everyone is free to
                 organize an Event and invite people as they wish.
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button>Organize</Button>
+            <CardActions
+              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+            >
+              <Button
+                sx={{
+                  padding: "10px",
+                  // background: "linear-gradient(45deg,#e523ff,#4548ff)",
+                  background: `#E5DB43`,
+                  background: `-webkit-linear-gradient(top left, #E5DB43, #FCE11A)`,
+                  background: `-moz-linear-gradient(top left, #E5DB43, #FCE11A)`,
+                  background: `linear-gradient(to bottom right, #E5DB43, #FCE11A)`,
+                  color: "white",
+                  fontWeight: 900,
+                  borderRadius: "30px",
+                  "&:hover": { opacity: "0.8" },
+                }}
+                onClick={() => navigate("/organize")}
+              >
+                Organize
+              </Button>
             </CardActions>
           </div>
         </Card>
 
-        <Card sx={{ maxWidth: 400 }}>
+        <Card
+          sx={{
+            maxWidth: 400,
+            margin: "10px",
+            border: "2px solid yellow",
+            borderRadius: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+          }}
+        >
           <div
             style={{
               height: "100%",
@@ -71,23 +116,49 @@ function Select() {
               // display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url(${card2})`,
+              // background: `linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.3)), url(${card2})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
             <CardContent>
-              <Typography gutterBottom variant='h5' component='div'>
+              <Typography
+                gutterBottom
+                variant='h5'
+                component='div'
+                sx={{ textAlign: "center" }}
+              >
                 Join an Event
               </Typography>
-              <Typography variant='body2' color='text.secondary'>
+              <Typography
+                variant='body2'
+                color='text.primary'
+                sx={{ textAlign: "center" }}
+              >
                 This is a platform where people can join an Event and even dont
                 have to worry about getting back as we'll be laways there to
                 help.
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button>Join</Button>
+            <CardActions
+              sx={{ display: "flex", width: "100%", justifyContent: "center" }}
+            >
+              <Button
+                sx={{
+                  padding: "10px",
+                  background: `#E5DB43`,
+                  background: `-webkit-linear-gradient(top left, #E5DB43, #FCE11A)`,
+                  background: `-moz-linear-gradient(top left, #E5DB43, #FCE11A)`,
+                  background: `linear-gradient(to bottom right, #E5DB43, #FCE11A)`,
+                  color: "white",
+                  fontWeight: 900,
+                  borderRadius: "30px",
+                  "&:hover": { opacity: "0.8" },
+                }}
+                onClick={() => navigate("/user")}
+              >
+                Join
+              </Button>
             </CardActions>
           </div>
         </Card>
