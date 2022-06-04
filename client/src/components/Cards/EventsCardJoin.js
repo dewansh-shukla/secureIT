@@ -1,11 +1,11 @@
 import { Card, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Card1 from "./card1.webp";
 // import { GrAddCircle } from "react-icons/gr";
 
-function EventsCardJoin(props) {
-  const [open, setOpen] = useState(false);
+function EventsCardJoin(info) {
+    console.log("Info ", info)
   return (
     <Card
       className="rounded-2xl rounded-bl-2xl"
@@ -16,18 +16,35 @@ function EventsCardJoin(props) {
         background: "black",
       }}
     >
-      <div className="bg-white rounded-br-2xl shadow-2xl flex w-100%">
+      <div className='bg-white rounded-br-2xl shadow-2xl flex w-100%'>
         {/* Header Text */}
-        <div className="w-3/5 p-4 text-center">
-          <div className="py-5 mt-0">
+        <div className='w-3/5 p-4 text-center'>
+          <div className='mt-0 flex-col'>
             <h2>
               {/* {props.name} */}
-              <Typography variant="h4" component="div" gutterBottom>
-                Hello
+              <Typography
+                variant='body'
+                component='div'
+                gutterBottom
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  textAlign: "center",
+                  fontSize: "18px",
+                }}
+              >
+                @{info.eventName}
+              </Typography>
+              <Typography sx={{ fontSize: "15px", textAlign: "right" }}>
+                Venue:{info.eventVenue}
               </Typography>
             </h2>
           </div>
-          <p className="text-black p-3">or use your email account</p>
+          <p className='text-black p-3'>{info.eventDescription}</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <p>Start Time {info.eventStartDate}</p>
+            <p>End time {info.eventEndDate}</p>
+          </div>
           <button
         style={{
           display: "flex",
@@ -36,15 +53,10 @@ function EventsCardJoin(props) {
           color: "yellow",
           justifyContent: "center",
         }}
-        onClick={() => {
-          setOpen(true);
-        }}
       >
         Join Event 
         {/* <GrAddCircle style={{ fontSize: "15px"}} /> */}
       </button>
-
-          <div className="flex flex-col items-center"></div>
         </div>
         <div
           className="w-2/5 rounded-br-2xl py-36 px-8"
@@ -66,3 +78,6 @@ function EventsCardJoin(props) {
 }
 
 export default EventsCardJoin;
+
+
+

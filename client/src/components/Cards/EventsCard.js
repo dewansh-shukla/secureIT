@@ -1,7 +1,5 @@
 import { Card, Typography } from "@mui/material"
 import React from "react"
-import { MdLockOutline } from "react-icons/md"
-import { FiUser } from "react-icons/fi"
 import axios from "axios"
 import Card1 from "./card1.webp"
 
