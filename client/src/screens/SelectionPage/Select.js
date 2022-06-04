@@ -1,7 +1,29 @@
 import { Card } from "@mui/material"
-import React from "react"
+import axios from "axios"
+import React, { useEffect, useState, useContext } from "react"
+import { UserContext } from "../../App"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 function Select() {
+  const navigate = useNavigate()
+  const { user, setUser } = useContext(UserContext)
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    const getData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/user/info/", {
+          headers: { Authorization: token },
+        })
+        setUser({
+          username: response.data.username,
+          id: response.data._id,
+          email: response.data.email,
+        })
+      } catch (error) {}
+    }
+    getData()
+  }, [])
+  console.log(user)
   return (
     <Main>
       <Holder>

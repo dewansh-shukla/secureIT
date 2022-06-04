@@ -10,11 +10,13 @@ const app = express()
 const PORT = process.env.PORT || 4000
 import registerRoutes from "./routes/registerRouter.js"
 import loginRoutes from "./routes/loginRouter.js"
+import userInfoRoutes from "./routes/userRouter.js"
 db()
 app.use(bodyParser.json(), urlencodedParser)
 app.use(cors())
 app.use("/signup", registerRoutes)
 app.use("/login", loginRoutes)
+app.use("/user", userInfoRoutes)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })

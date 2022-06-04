@@ -15,7 +15,6 @@ const verifyJWT = async (req, res, next) => {
         isLoggedIn: true,
         message: "Authenticated",
       }
-
       next()
     })
   } else {

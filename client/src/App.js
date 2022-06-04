@@ -1,4 +1,5 @@
 import "./App.css"
+import React, { createContext, useState } from "react"
 import Header from "./components/Header/Header"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
@@ -6,6 +7,7 @@ import Landing from "./screens/Landing/Landing"
 import SignUp from "./screens/Signup/SignUp"
 import Login from "./screens/Login/Login"
 import Select from "./screens/SelectionPage/Select"
+import Organize from "./screens/Organizers/Organize"
 
 const theme = createTheme({
   typography: {
@@ -17,19 +19,30 @@ const theme = createTheme({
     },
   },
 })
+
+export const UserContext = createContext(null)
 function App() {
+  const [user, setUser] = useState({
+    username: "",
+    id: "",
+    email: "",
+  })
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Header />
-        <div style={{ marginTop: "75px" }}>
-          <Routes>
-            <Route exact path='/' element={<Landing />} />
-            <Route path='signup' element={<SignUp />} />
-            <Route path='login' element={<Login />} />
-            <Route path='select' element={<Select />} />
-          </Routes>
-        </div>
+        <UserContext.Provider value={{ user, setUser }}>
+          <Header />
+          <div style={{ marginTop: "75px" }}>
+            <Routes>
+              <Route exact path='/' element={<Landing />} />
+              <Route path='signup' element={<SignUp />} />
+              <Route path='login' element={<Login />} />
+              <Route path='select' element={<Select />} />
+              <Route path='organize' element={<Organize />} />
+            </Routes>
+          </div>
+        </UserContext.Provider>
       </ThemeProvider>
     </BrowserRouter>
   )
