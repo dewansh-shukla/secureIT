@@ -1,9 +1,11 @@
 import { Card, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Card1 from "./card1.webp";
+// import { GrAddCircle } from "react-icons/gr";
 
-function EventsCard(props) {
+function EventsCardJoin(props) {
+  const [open, setOpen] = useState(false);
   return (
     <Card
       className="rounded-2xl rounded-bl-2xl"
@@ -26,6 +28,21 @@ function EventsCard(props) {
             </h2>
           </div>
           <p className="text-black p-3">or use your email account</p>
+          <button
+        style={{
+          display: "flex",
+          alignItems: "center",
+          fontSize: "15px",
+          color: "yellow",
+          justifyContent: "center",
+        }}
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Join Event 
+        {/* <GrAddCircle style={{ fontSize: "15px"}} /> */}
+      </button>
 
           <div className="flex flex-col items-center"></div>
         </div>
@@ -48,4 +65,4 @@ function EventsCard(props) {
   );
 }
 
-export default EventsCard;
+export default EventsCardJoin;
