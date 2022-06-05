@@ -13,20 +13,21 @@ function JoinedEventCard({ info }) {
 
   const handleCheckIn = () => {
     setCheckedIn(!checkedIn)
-    var count = 0
-    const messageTime = 10000
+
     if (checkedIn) {
+      var count = 0
       const interval = setInterval(() => {
-        console.log("interval in every 10 sec")
+        console.log("interval in every 5 sec")
         count = count + 1
         setTimeout(() => {
+          console.log("reminding after 3 sec")
           setReminder(true)
-        }, messageTime)
+        }, 3000)
         if (count === 2) {
           clearInterval(interval)
+          setReminder(false)
         }
-        messageTime = messageTime + 5000
-      }, 30000)
+      }, 5000)
     } else {
       setReminder(false)
     }
