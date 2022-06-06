@@ -1,29 +1,34 @@
-import { Card, Typography } from "@mui/material";
-import React from "react";
+import { Button, Card, Typography } from "@mui/material";
+import React, { useState } from "react";
 import axios from "axios";
 import Card1 from "./card1.webp";
-
-function EventsCardJoin({info}) {
-    console.log("Info ", info)
+import UserAddModal from "../Modals/UserAddModal";
+function EventsCardJoin({ info }) {
+  // const handleSubmit = (id) => {
+  //   const eventJoined = { ...info, eventCheckStatus: false }
+  //   axios.post("http://localhost:4000/user/joinedevents", eventJoined)
+  // }
+  const [open, setOpen] = useState(false);
   return (
     <Card
       className="rounded-2xl rounded-bl-2xl"
       sx={{
-        width: "90%",
+        width: "100%",
         margin: "10px 0px 10px 0px",
-        minHeight: "200px",
+        minHeight: "300px",
         background: "black",
+        borderRadius: "30px",
       }}
     >
-      <div className='bg-white rounded-br-2xl shadow-2xl flex w-100%'>
+      <div className="bg-white rounded-br-2xl shadow-2xl flex w-100% justify-evenly ">
         {/* Header Text */}
-        <div className='w-3/5 p-4 text-center'>
-          <div className='mt-0 flex-col'>
+        <div className="w-3/5 p-4 text-center">
+          <div className="mt-0 flex-col">
             <h2>
               {/* {props.name} */}
               <Typography
-                variant='body'
-                component='div'
+                variant="body"
+                component="div"
                 gutterBottom
                 style={{
                   margin: 0,
@@ -35,28 +40,77 @@ function EventsCardJoin({info}) {
               >
                 @{info.eventName}
               </Typography>
-              <Typography sx={{ fontSize: "15px", textAlign: "right",fontFamily: `'Roboto Mono', monospace !important`, }}>
-                Venue:{info.eventVenue}
+              <Typography
+                sx={{
+                  fontSize: "15px",
+                  fontWeight: 900,
+                  display: "flex",
+                  alignItems: "center",
+                  fontFamily: `'Roboto Mono', monospace !important`,
+                  justifyContent: "flex-end",
+                }}
+              >
+                Venue:
+                <Typography sx={{ fontWeight: 300, fontSize: "15px" }}>
+                  {info.eventVenue}
+                </Typography>
               </Typography>
             </h2>
           </div>
-          <p  style={{fontFamily: "Roboto Mono, monospace"}} className='text-black p-3'>{info.eventDescription}</p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <p style={{fontFamily: "Roboto Mono, monospace"}}>Start Time:  {(info.eventStartDate).slice(0,19)}</p>
-            <p style={{fontFamily: "Roboto Mono, monospace"}}>End time:  {(info.eventEndDate).slice(0,19)}</p>
+          <p
+            style={{ fontFamily: "Roboto Mono, monospace" }}
+            className="text-black p-3"
+          >
+            {info.eventDescription}
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: "15px",
+              fontWeight: 900,
+            }}
+          >
+            <p>
+              Start Time:-
+              <span style={{ fontWeight: 600 }}>
+                {info.eventStartDate.slice(0, 10)}
+                &nbsp;&nbsp;&nbsp;
+                {info.eventStartDate.slice(11, 16)}
+              </span>
+            </p>
+            <p>
+              End time:-
+              <span style={{ fontWeight: 600 }}>
+                {info.eventEndDate.slice(0, 10)}
+                &nbsp;&nbsp;&nbsp;
+                {info.eventEndDate.slice(11, 16)}
+              </span>
+            </p>
           </div>
-          <button
-        style={{
-          display: "flex",
-          alignItems: "center",
-          fontSize: "15px",
-          color: "yellow",
-          justifyContent: "center",
-        }}
-      >
-        Join Event 
-      </button>
+          <div
+            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+          >
+            <Button
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                fontSize: "15px",
+                color: "yellow",
+                background: "linear-gradient(45deg,#9257ff,#ff5da1)",
+                padding: "10px",
+                color: "white",
+                borderRadius: "30px",
+                marginTop: "30px",
+              }}
+              onClick={() => setOpen(true)}
+            >
+              Join Event
+              {/* <GrAddCircle style={{ fontSize: "15px"}} /> */}
+            </Button>
+          </div>
         </div>
+        <UserAddModal open={open} setOpen={setOpen} info={info} />
         <div
           className="w-2/5 rounded-br-2xl py-36 px-8"
           style={{
@@ -77,6 +131,3 @@ function EventsCardJoin({info}) {
 }
 
 export default EventsCardJoin;
-
-
-

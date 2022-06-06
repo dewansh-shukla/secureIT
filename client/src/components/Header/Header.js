@@ -29,7 +29,7 @@ function Header() {
           >
             Secure
             <Typography sx={{ color: "yellow", fontWeight: "bold" }}>
-              IT
+              iT
             </Typography>
           </Typography>
           <Box sx={{ marginLeft: "auto", display: "flex" }}>
@@ -41,7 +41,11 @@ function Header() {
             >
               <Tab label='Selection' onClick={() => navigate("/select")} />
               <Tab label='organizer' onClick={() => navigate("/organize")} />
-              <Tab label='Events' onClick={() => navigate("/allevents")} />
+              <Tab label='All Events' onClick={() => navigate("/allevents")} />
+              <Tab
+                label='Joined Events'
+                onClick={() => navigate("/joinedevents")}
+              />
             </Tabs>
             <Btn onClick={() => navigate("/signup")}>SignUp</Btn>
             <Btn onClick={() => navigate("/login")}>LogIn</Btn>
