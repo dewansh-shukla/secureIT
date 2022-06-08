@@ -18,6 +18,7 @@ function JoinedEvents() {
       .get(`http://localhost:4000/user/getalljoinedevents/${user.id}`)
       .then((res) => setData(res.data))
   }, [refresh])
+  console.log(data)
   return (
     <div
       style={{

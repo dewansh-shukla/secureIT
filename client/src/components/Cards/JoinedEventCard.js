@@ -40,7 +40,7 @@ function JoinedEventCard({ info }) {
         width: "100%",
 
         margin: "10px 0px 10px 0px",
-        minHeight: "250px",
+        minHeight: "300px",
         background: "black",
         borderRadius: "30px",
       }}
@@ -151,7 +151,7 @@ function JoinedEventCard({ info }) {
           open={reminder}
           autoHideDuration={3000}
           onClose={handleClose}
-          message={` Sos to Contacts ${info.contact1} and ${info.contact2}`}
+          message={` Sos sent to Contacts ${info.contact1} , ${info.contact2} and ${info.contact3}`}
         />
         <div
           className='w-2/5 rounded-br-2xl py-36 px-8'
